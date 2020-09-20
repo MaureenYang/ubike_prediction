@@ -121,7 +121,7 @@ for i, estimator in enumerate(estimator_list):
 
     model_score_matrix.append(model_score_list)
 
-fig=plt.figure(figsize=(20,8))
+fig=plt.figure(figsize=(100,8))
 x_axis = [i for i in range(len(file_name_list))]
 
 for i, y in enumerate(model_score_matrix):
