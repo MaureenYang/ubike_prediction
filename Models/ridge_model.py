@@ -112,34 +112,47 @@ def ridge(X, Y, kfold=3, feature_set=None):
     errors_baseline = (mean_squared_error(predict_y_base,test_y))#,squared = False))
 
     results = [errors_Grid_CV,errors_Random_CV,errors_baseline]
-    print('results:',results)
+    print('ridge results:',results)
 
-    if False:
+    if True:
+        fig=plt.figure(figsize=(15,8))
         x_axis = range(3)
 
         plt.bar(x_axis, results)
         plt.xticks(x_axis, ('GridSearchCV','RandomizedSearchCV', 'Baseline'))
-        plt.show()
+        #plt.show()
+        plt.savefig('ridge_error_compare.png')
 
+        print('min index:',results.index(min(results)))
+
+        if results.index(min(results)) is 0:
+            model = ridge_grid
+            pred_y = predict_y_grid
+        else:
+            if results.index(min(results)) is 1:
+                model = ridge_random
+                pred_y = predict_y_random
+            else:
+                mode = ridge
+                pred_y = predict_y_base
 
         #feature importance
-      #  num_feature = len(ridge_grid.best_estimator_.f)
-      #  plt.figure(figsize=(24,6))
-      #  plt.bar(range(0,num_feature*4,4),ridge_grid.best_estimator_.feature_importances_)
+        #predictors = x_train.columns
+        #coef = Series(lreg.coef_,predictors).sort_values()
+        #coef.plot(kind='bar', title='Model Coefficients, kflod:'+str(kfold))
 
-      #  label_name = X.keys()
+        #plt.show()
+        #plt.savefig('ridge_feature_importance.png')
 
-      #  plt.xticks(range(0,num_feature*4,4), label_name)
-        plt.title("Feature Importances"+",kfold="+str(kfold))
-        plt.show()
         fig=plt.figure(figsize=(20,8))
         ax = fig.gca()
-        x_label = range(0,len(predict_y_grid))
+        x_label = range(0,len(pred_y))
         plt.title("kfold="+str(kfold))
-        ax.plot(x_label, predict_y_grid, 'r--', label = "predict")
+        ax.plot(x_label, pred_y, 'r--', label = "predict")
         ax.plot(x_label, test_y, label = "ground_truth")
         ax.set_ylim(0, 200)
         ax.legend()
-        plt.show()
+        #plt.show()
+        plt.savefig('ridge_prediction.png')
 
     return ridge_grid.predict,ridge_grid.best_estimator_

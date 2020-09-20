@@ -58,6 +58,7 @@ def lr(X, Y, kfold=3, feature_set=None):
     print(BestPara_random)
 
     predict_y_base=LR.predict(test_X)
+
     # Performance metrics
     from sklearn.metrics import mean_squared_log_error
     from sklearn.metrics import mean_squared_error
@@ -68,18 +69,21 @@ def lr(X, Y, kfold=3, feature_set=None):
 
     errors_baseline = (mean_squared_error(predict_y_base,test_y))#,squared = False))
     results = [errors_baseline]
-    print('results:',results)
+    print('Linear Reg results:',results)
 
-    if False:
+    if True:
+        fig=plt.figure(figsize=(20,8))
         x_axis = range(1)
 
-        plt.bar(x_axis, results)
-        plt.xticks(x_axis, ('Baseline'))
-        plt.show()
+        #feature importance
+        #num_feature = len(LR.best_estimator_.feature_importances_)
+        #plt.figure(figsize=(24,6))
+        #plt.bar(range(0,num_feature*4,4),LR.best_estimator_.feature_importances_)
 
+        #label_name = X.keys()
+        #plt.xticks(range(0,num_feature*4,4), label_name)
+        #plt.savefig('LR_feature_importance.png')
 
-        plt.title("Feature Importances"+",kfold="+str(kfold))
-        plt.show()
         fig=plt.figure(figsize=(20,8))
         ax = fig.gca()
         x_label = range(0,len(predict_y_base))
@@ -88,6 +92,7 @@ def lr(X, Y, kfold=3, feature_set=None):
         ax.plot(x_label, test_y, label = "ground_truth")
         ax.set_ylim(0, 200)
         ax.legend()
-        plt.show()
+        #plt.show()
+
 
     return lr.predict,lr.coef_

@@ -73,7 +73,6 @@ for feature_name in file_name_list:
 
 df = pd.read_csv(source_folder+"new_data_sno1_predict.csv")
 
-df = df.head(100)
 df = df.dropna()
 X = df.drop(columns = [df.keys()[0],'sbi','bemp','time'])
 Y = df['bemp']
@@ -95,8 +94,10 @@ model_score_matrix=[]
 
 ##Train Model
 for i, estimator in enumerate(estimator_list):
+
     print("Current Model:",estimator_name_list[i])
     model_predict, model = estimator(train_X, train_y)
+
     ##Score
     model_score_list = []
 
@@ -120,6 +121,7 @@ for i, estimator in enumerate(estimator_list):
 
     model_score_matrix.append(model_score_list)
 
+fig=plt.figure(figsize=(20,8))
 x_axis = [i for i in range(len(file_name_list))]
 
 for i, y in enumerate(model_score_matrix):
@@ -128,4 +130,5 @@ for i, y in enumerate(model_score_matrix):
 plt.xticks(x_axis,  xaxis_Name)
 plt.ylabel("RMSE")
 plt.legend()
-plt.show()
+#plt.show()
+plt.savefig('model_compare.png')

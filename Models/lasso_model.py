@@ -113,13 +113,27 @@ def lasso(X, Y, kfold=3, feature_set=None):
     errors_Random_CV = (mean_squared_error(predict_y,test_y))#,squared = False))
     errors_baseline = (mean_squared_error(predict_y_base,test_y))#,squared = False))
     results = [errors_Grid_CV,errors_Random_CV,errors_baseline]
-    print('results:',results)
 
-    if False:
+    print('lasso results:',results)
+
+    if True:
+        
+        fig=plt.figure(figsize=(20,8))
         x_axis = range(3)
         plt.bar(x_axis, results)
         plt.xticks(x_axis, ('GridSearchCV','RandomizedSearchCV', 'Baseline'))
-        plt.show()
+        #plt.show()
+        plt.savefig('lasso_error_compare.png')
+
+        #feature importance
+        #num_feature = len(lasso.best_estimator_.feature_importances_)
+        #plt.figure(figsize=(24,6))
+        #plt.bar(range(0,num_feature*4,4),lasso.best_estimator_.feature_importances_)
+        #label_name = X.keys()
+        #plt.xticks(range(0,num_feature*4,4), label_name)
+        #plt.title("Feature Importances"+",kfold="+str(kfold))
+        #plt.show()
+        #plt.savefig('lasso_feature_importance.png')
 
         fig=plt.figure(figsize=(20,8))
         ax = fig.gca()
@@ -129,6 +143,7 @@ def lasso(X, Y, kfold=3, feature_set=None):
         ax.plot(x_label, test_y, label = "ground_truth")
         ax.set_ylim(0, 200)
         ax.legend()
-        plt.show()
+        #plt.show()
+        plt.savefig('lasso_prediction.png')
 
     return lasso_grid.predict,lasso_grid.best_estimator_
