@@ -10,6 +10,7 @@ import Models.ridge_model as ridge
 import Models.rf_model as rf
 import Models.gb_model as gb
 import Models.ada_model as ada
+import pickle
 
 
 from sklearn.metrics import mean_squared_error
@@ -48,8 +49,8 @@ if False:
     estimator_list = [lr.lr,ridge.ridge, lasso.lasso, gb.gb, rf.rf, ada.ada]
     line_style = ['-xb','-xr','-xg','-xc', '-xm','-xy']
 else:
-    estimator_name_list = ["Ridge", "Lasso", "Gradient Boost", "RandomForest", "AdaBoost"]
-    estimator_list = [ridge.ridge, lasso.lasso, gb.gb, rf.rf, ada.ada]
+    estimator_name_list = [ "AdaBoost"]
+    estimator_list = [ada.ada]
     line_style = ['-xr','-xg','-xc', '-xm','-xy']
 
 target = 'bemp_'
@@ -97,6 +98,8 @@ for i, estimator in enumerate(estimator_list):
 
     print("Current Model:",estimator_name_list[i])
     model_predict, model = estimator(train_X, train_y)
+    model_name = estimator_name_list[i]+".pkl"
+    pickle.dump(estimator, open(model_name, 'wb'))
 
     ##Score
     model_score_list = []

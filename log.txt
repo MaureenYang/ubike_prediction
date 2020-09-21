@@ -1,0 +1,100 @@
+[CV] alpha=45.0 ......................................................
+[CV] ....................................... alpha=45.0, total=   0.2s
+[CV] alpha=83.0 ......................................................
+[CV] ....................................... alpha=83.0, total=   0.1s
+[CV] alpha=84.33333333333333 .........................................
+[CV] .......................... alpha=84.33333333333333, total=   0.1s
+[CV] alpha=40.0 ......................................................
+[CV] ....................................... alpha=40.0, total=   0.2s
+[CV] alpha=83.44444444444444 .........................................
+[CV] .......................... alpha=83.44444444444444, total=   0.1s
+[CV] alpha=84.77777777777777 .........................................
+[CV] .......................... alpha=84.77777777777777, total=   0.1s
+[CV] alpha=84.0 ......................................................
+[CV] ....................................... alpha=84.0, total=   0.2s
+[CV] alpha=23.0 ......................................................
+[CV] ....................................... alpha=23.0, total=   0.2s
+[CV] alpha=83.22222222222223 .........................................
+[CV] .......................... alpha=83.22222222222223, total=   0.1s
+[CV] alpha=84.55555555555556 .........................................
+[CV] .......................... alpha=84.55555555555556, total=   0.1s
+RuntimeError: I/O operations still in flight while destroying Overlapped object, the process may crash
+[CV] alpha=46.0 ......................................................
+[CV] ....................................... alpha=46.0, total=   0.1s
+[CV] alpha=1.0 .......................................................
+[CV] ........................................ alpha=1.0, total=   0.1s
+[CV] alpha=84.11111111111111 .........................................
+[CV] .......................... alpha=84.11111111111111, total=   0.1s
+[CV] alpha=54.0 ......................................................
+[CV] ....................................... alpha=54.0, total=   0.1s
+[CV] alpha=81.0 ......................................................
+[CV] ....................................... alpha=81.0, total=   0.1s
+[CV] alpha=83.66666666666667 .........................................
+[CV] .......................... alpha=83.66666666666667, total=   0.1s
+[CV] alpha=85.0 ......................................................
+[CV] ....................................... alpha=85.0, total=   0.1s
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 6 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of  10 | elapsed:    2.9s remaining:    2.9s
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:    4.2s finished
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 6 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of  10 | elapsed:    2.2s remaining:    2.2s
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:    3.6s finished
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 6 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   5 out of  10 | elapsed:    0.4s remaining:    0.4s
+Current Model: Ridge
+Parameters currently in use:
+
+{'alpha': 1.0,
+ 'copy_X': True,
+ 'fit_intercept': True,
+ 'max_iter': None,
+ 'normalize': False,
+ 'random_state': 42,
+ 'solver': 'auto',
+ 'tol': 0.001}
+Fitting 1 folds for each of 10 candidates, totalling 10 fits
+{'alpha': 84.0}
+{'alpha': 84.0}
+Fitting 1 folds for each of 10 candidates, totalling 10 fits
+{'alpha': 85.0}
+ridge results: [260.2674268522516, 260.2681729065429, 260.34027575471544]
+min index: 0
+Current Model: Lasso
+Parameters currently in use:
+
+{'alpha': 1.0,
+ 'copy_X': True,
+ 'fit_intercept': True,
+ 'max_iter': 1000,
+ 'normalize': False,
+ 'positive': False,
+ 'precompute': False,
+ 'random_state': 42,
+ 'selection': 'cyclic',
+ 'tol': 0.0001,
+ 'warm_start': False}
+Fitting 1 folds for each of 10 candidates, totalling 10 fits
+Traceback (most recent call last):
+  File "ModelComparison.py", line 100, in <module>
+    model_predict, model = estimator(train_X, train_y)
+  File "I:\UbikeProject\Models\lasso_model.py", line 72, in lasso
+    lasso_random.fit(train_X, train_y)
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\site-packages\sklearn\utils\validation.py", line 73, in inner_f
+    return f(**kwargs)
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\site-packages\sklearn\model_selection\_search.py", line 736, in fit
+    self._run_search(evaluate_candidates)
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\site-packages\sklearn\model_selection\_search.py", line 1531, in _run_search
+    random_state=self.random_state))
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\site-packages\sklearn\model_selection\_search.py", line 715, in evaluate_candidates
+    cv.split(X, y, groups)))
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\site-packages\joblib\parallel.py", line 1042, in __call__
+    self.retrieve()
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\site-packages\joblib\parallel.py", line 921, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\site-packages\joblib\_parallel_backends.py", line 540, in wrap_future_result
+    return future.result(timeout=timeout)
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\concurrent\futures\_base.py", line 427, in result
+    self._condition.wait(timeout)
+  File "C:\Users\Mandy\Anaconda3\envs\tensorflow_gpuenv\lib\threading.py", line 295, in wait
+    waiter.acquire()
+KeyboardInterrupt

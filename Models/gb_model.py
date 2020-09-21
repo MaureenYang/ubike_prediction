@@ -50,12 +50,12 @@ def gb(X, Y, kfold=3, feature_set=None):
     arr = index_splitter(N = len(train_X), fold = kfold)
     ps2 = PredefinedSplit(arr)
 
-    lr = [x for x in np.linspace(0.1, 0.5, num = 3)]
-    n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+    lr = [x for x in np.linspace(0.1, 0.2, num=2)]
+    n_estimators = [int(x) for x in np.linspace(start=200, stop=2000, num=5)]
     # Number of features to consider at every split
     max_features = ['auto', 'sqrt']
     # Maximum number of levels in tree
-    max_depth = [int(x) for x in np.linspace(10, 50, num = 3)]
+    max_depth = [int(x) for x in np.linspace(5,15,num = 2)]
    # max_depth.append(None)
     # Minimum number of samples required to split a node
     min_samples_split = [5, 10]
@@ -86,7 +86,7 @@ def gb(X, Y, kfold=3, feature_set=None):
 
     # Random search of parameters, using 3 fold cross validation,
     # search across 100 different combinations, and use all available cores
-    gb_random = RandomizedSearchCV(estimator=gb, n_iter=200, param_distributions=random_grid, scoring='neg_mean_squared_error',
+    gb_random = RandomizedSearchCV(estimator=gb, n_iter=100, param_distributions=random_grid, scoring='neg_mean_squared_error',
                                   cv = ps2.split(), verbose=2, random_state=42, n_jobs=-1)
 
     # Fit the random search model
@@ -107,7 +107,7 @@ def gb(X, Y, kfold=3, feature_set=None):
     # Maximum number of levels in tree
     #max_depth = [int(x) for x in range(BestPara_random["max_depth"]-10,BestPara_random["max_depth"]+10,2)]
     max_depth = []
-    for x in range(BestPara_random["max_depth"]-5,BestPara_random["max_depth"]+5,5):
+    for x in range(BestPara_random["max_depth"]-3,BestPara_random["max_depth"]+3,3):
         if x>0:
             max_depth.append(int(x))
     # Minimum number of samples required to split a node
@@ -116,11 +116,13 @@ def gb(X, Y, kfold=3, feature_set=None):
         if x>1:
             min_samples_split.append(int(x))
     # Minimum number of samples required at each leaf node
+    # min_samples_leaf = []
+    # for x in range(BestPara_random["min_samples_leaf"]-1,BestPara_random["min_samples_leaf"]+1,1):
+    #     if x>0:
+    #         min_samples_leaf.append(int(x))
     min_samples_leaf = []
-    for x in range(BestPara_random["min_samples_leaf"]-1,BestPara_random["min_samples_leaf"]+1,1):
-        if x>0:
-            min_samples_leaf.append(int(x))
 
+    min_samples_leaf.append(BestPara_random["min_samples_leaf"])
 
     # Create the random grid
     grid_grid = {'learning_rate' : lr,

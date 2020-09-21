@@ -51,8 +51,8 @@ def ada(X, Y, kfold=3, feature_set=None):
     arr = index_splitter(N = len(train_X), fold = kfold)
     ps2 = PredefinedSplit(arr)
 
-    learning_rate = [x for x in np.linspace(0.1, 1, num = 10)]
-    n_estimators = [int(x) for x in np.linspace(start = 20, stop = 1000, num = 100)]
+    learning_rate = [x for x in np.linspace(0.1, 1, num = 3)]
+    n_estimators = [int(x) for x in np.linspace(start=20, stop=1000, num = 20)]
     loss = ['square']
 
     random_grid = { 'n_estimators': n_estimators,
@@ -69,7 +69,7 @@ def ada(X, Y, kfold=3, feature_set=None):
 
     # Random search of parameters, using 3 fold cross validation,
     # search across 100 different combinations, and use all available cores
-    ada_random = RandomizedSearchCV(estimator=ada, n_iter=200, param_distributions = random_grid, scoring='neg_mean_squared_error',
+    ada_random = RandomizedSearchCV(estimator=ada, n_iter=100, param_distributions = random_grid, scoring='neg_mean_squared_error',
                                   cv = ps2.split(), verbose=2, random_state=42, n_jobs=-1)
 
     # Fit the random search model
@@ -84,7 +84,7 @@ def ada(X, Y, kfold=3, feature_set=None):
     lr = [BestPara_random['learning_rate']]
     #n_estimators = [BestPara_random["n_estimators"]]
 
-    n_estimators = [int(x) for x in range(BestPara_random["n_estimators"]-10, BestPara_random["n_estimators"]+10, 20)]
+    n_estimators = [int(x) for x in range(BestPara_random["n_estimators"]-10, BestPara_random["n_estimators"]+10, 10)]
     n_estimators = [item for item in n_estimators if item > 0 ]
 
     grid_grid = { 'n_estimators': n_estimators,

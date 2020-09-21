@@ -52,16 +52,16 @@ def rf(X, Y, kfold=3, feature_set=None):
     arr = index_splitter(N = len(train_X), fold = kfold)
     ps2 = PredefinedSplit(arr)
 
-    n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+    n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 5)]
     # Number of features to consider at every split
     max_features = ['auto', 'sqrt']
     # Maximum number of levels in tree
-    max_depth = [int(x) for x in np.linspace(10, 100, num = 10)]
+    max_depth = [int(x) for x in np.linspace(5,15,num = 2)]
    # max_depth.append(None)
     # Minimum number of samples required to split a node
-    min_samples_split = [2, 5, 10, 15]
+    min_samples_split = [5, 10]
     # Minimum number of samples required at each leaf node
-    min_samples_leaf = [1, 2, 4]
+    min_samples_leaf = [2, 4]
     # Method of selecting samples for training each tree
     bootstrap = [True]
 
@@ -100,26 +100,28 @@ def rf(X, Y, kfold=3, feature_set=None):
     from sklearn.model_selection import GridSearchCV
 
     # Number of trees in random forest
-    n_estimators = [int(x) for x in range(BestPara_random["n_estimators"]-100,BestPara_random["n_estimators"]+100,25)]
+    n_estimators = [int(x) for x in range(BestPara_random["n_estimators"]-100,BestPara_random["n_estimators"]+100,50)]
     # Number of features to consider at every split
     max_features = [BestPara_random["max_features"]]
     # Maximum number of levels in tree
     #max_depth = [int(x) for x in range(BestPara_random["max_depth"]-10,BestPara_random["max_depth"]+10,2)]
     max_depth = []
-    for x in range(BestPara_random["max_depth"]-10,BestPara_random["max_depth"]+10,2):
+    for x in range(BestPara_random["max_depth"]-3,BestPara_random["max_depth"]+3,3):
         if x>0:
             max_depth.append(int(x))
     # Minimum number of samples required to split a node
     min_samples_split = []
-    for x in range(BestPara_random["min_samples_split"]-2,BestPara_random["min_samples_split"]+2,1):
+    for x in range(BestPara_random["min_samples_split"]-2,BestPara_random["min_samples_split"]+2,2):
         if x>1:
             min_samples_split.append(int(x))
     # Minimum number of samples required at each leaf node
+    # min_samples_leaf = []
+    # for x in range(BestPara_random["min_samples_leaf"]-1,BestPara_random["min_samples_leaf"]+1,1):
+    #     if x>0:
+    #         min_samples_leaf.append(int(x))
     min_samples_leaf = []
-    for x in range(BestPara_random["min_samples_leaf"]-1,BestPara_random["min_samples_leaf"]+1,1):
-        if x>0:
-            min_samples_leaf.append(int(x))
 
+    min_samples_leaf.append(BestPara_random["min_samples_leaf"])
     # Method of selecting samples for training each tree
     bootstrap = [BestPara_random["bootstrap"]]
 
