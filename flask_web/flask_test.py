@@ -1,80 +1,57 @@
-from flask import Flask, request, jsonify, render_template
-import pickle
-from sklearn.model_selection import PredefinedSplit
+import numpy as np
 import pandas as pd
+import pickle
+from datetime import datetime
 
-df = pd.read_csv('new_data_sno1_parsed2_predict_merged_6h.csv')
+from flask import Flask, render_template, session, redirect, url_for
+from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField,DecimalField,DateField
+from wtforms.validators import DataRequired
+from wtforms.fields.html5 import DateTimeLocalField
 
-def index_splitter(N, fold):
-    index_split = []
-    test_num = int(N/fold)
-    train_num = N-test_num
+df = pd.read_csv('src_csv/new_data_sno1_predict.csv')
 
-    for i in range(0,train_num):
-        index_split.append(-1)
-
-    for i in range(train_num,N):
-        index_split.append(0)
-
-    return index_split
 
 # preprocessing
 df = df.dropna()
-X = df.drop(columns = [df.keys()[0],'tot','sbi','bemp','act'])
-Y = df['bemp']
+df['time'] = pd.to_datetime(df['time'], format='%Y-%m-%d %H:%M:%S', errors='ignore')
+df = df.set_index(pd.DatetimeIndex(df['time']))
+df = df.drop_duplicates()
+X = df.drop(columns = [df.keys()[0],'sbi'])
 
-# Data Splitter
-arr = index_splitter(N=len(X), fold=4)
-ps = PredefinedSplit(arr)
+model = pickle.load(open('lasso_new.pkl','rb'))
 
-for train, test in ps.split():
-    train_index = train
-    test_index = test
-
-
-train_X, train_y = X.iloc[train_index,:], Y.iloc[train_index]
-test_X, test_y = X.iloc[test_index,:], Y.iloc[test_index]
-model = pickle.load(open('model.pkl', 'rb'))
-
+class InputForm(FlaskForm):
+    station_id = DecimalField('Station ID', validators=[DataRequired()])
+    current_time = DateTimeLocalField('Datetime',format='%Y-%m-%dT%H:%M')
+    pred_hour = DecimalField('Predict Hour', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 app = Flask(__name__)
-@app.route('/')
-def home():
-    return render_template('predict.html')
-from datetime import datetime
+bootstrap = Bootstrap(app)
+app.config['SECRET_KEY'] = 'hard to guess string'
 
+@app.route('/',methods=['GET','POST'])
+def index():
+    prediction_text = ''
+    inputform = InputForm()
 
-@app.route('/predict',methods=['POST'])
-def predict():
-    int_features = []
-    for x in request.form.values():
-        print("x:", x)
-        try:
-            int_features = int_features + [int(x)]
-        except:
-            dt = datetime.strptime(x, "%Y/%m/%d %H:%M:%S")
-            int_features = int_features + [dt]
-            print("dt:", dt)
+    if inputform.validate_on_submit():
+        station_id = inputform.station_id.data
+        current_time = inputform.current_time.data
+        pred_hour = inputform.pred_hour.data
 
-    #print("dt:", test_X.iloc(0))
+        ct = current_time.strftime("%Y%m%d %H:%M:%S")
+        real_y = X[ct]
+        real_y = real_y[real_y.predict_hour == pred_hour]
+        real_y = real_y.drop_duplicates()                   #this is a problem
+        X_pred = real_y.drop(columns=['bemp','time'])
+        pred_y = int(model.predict(X_pred))
+        prediction_text = 'In {}, the empty number of Station {} in {} hour after is {}, prediction is {}'.format(current_time,station_id,pred_hour,int(real_y.y_bemp.values),pred_y)
 
-    #final_features = [np.array(int_features)]
-    #print(test_X[dt])
-    prediction = model.predict(test_X)
+    return render_template('index.html',form=inputform,prediction_text=prediction_text)
 
-    output = round(prediction[0])
-
-    return render_template('predict.html', prediction_text='Sales should be $ {}'.format(output))
-    #return render_template('predict.html', prediction_text='predict should be $ {}'.format(int_features))
-
-@app.route('/results',methods=['POST'])
-def results():
-
-    data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
-
-    output = prediction[0]
-    return jsonify(output)
 
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 
 
 if True:
-    df = pd.read_csv('new_data_sno1_parsed2_predict_merged_6h.csv')
+    df = pd.read_csv('src_csv/new_data_sno1_predict.csv')
 
     def index_splitter(N, fold):
         index_split = []
@@ -24,28 +24,28 @@ if True:
 
     # preprocessing
     df = df.dropna()
-    X = df.drop(columns = [df.keys()[0],'tot','sbi','bemp','act'])
+    df['time'] = pd.to_datetime(df['time'], format='%Y-%m-%d %H:%M:%S', errors='ignore')
+    df = df.set_index(pd.DatetimeIndex(df['time']))
+    X = df.drop(columns = [df.keys()[0],'sbi','bemp','time'])
     Y = df['bemp']
 
+
     # Data Splitter
-    arr = index_splitter(N=len(X), fold=4)
+    arr = index_splitter(N=len(X), fold=3)
     ps = PredefinedSplit(arr)
 
     for train, test in ps.split():
         train_index = train
         test_index = test
 
-
     train_X, train_y = X.iloc[train_index,:], Y.iloc[train_index]
     test_X, test_y = X.iloc[test_index,:], Y.iloc[test_index]
 
 if False:
     regressor = LinearRegression()
-
     regressor.fit(train_X, train_y)
-
     pickle.dump(regressor, open('model.pkl','wb'))
 
-model = pickle.load(open('model.pkl','rb'))
-print(test_X.head(1))
-print(model.predict(test_X))
+model = pickle.load(open('lasso_new.pkl','rb'))
+
+print(model.predict(test_Xn))
