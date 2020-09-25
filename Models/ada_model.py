@@ -69,7 +69,7 @@ def ada(X, Y, kfold=3, feature_set=None):
 
     # Random search of parameters, using 3 fold cross validation,
     # search across 100 different combinations, and use all available cores
-    ada_random = RandomizedSearchCV(estimator=ada, n_iter=100, param_distributions = random_grid, scoring='neg_mean_squared_error',
+    ada_random = RandomizedSearchCV(estimator=ada, n_iter=200, param_distributions = random_grid, scoring='neg_mean_squared_error',
                                   cv = ps2.split(), verbose=2, random_state=42, n_jobs=-1)
 
     # Fit the random search model

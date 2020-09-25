@@ -52,7 +52,7 @@ def rf(X, Y, kfold=3, feature_set=None):
     arr = index_splitter(N = len(train_X), fold = kfold)
     ps2 = PredefinedSplit(arr)
 
-    n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 5)]
+    n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
     # Number of features to consider at every split
     max_features = ['auto', 'sqrt']
     # Maximum number of levels in tree
