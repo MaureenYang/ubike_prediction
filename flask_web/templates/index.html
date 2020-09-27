@@ -3,17 +3,27 @@
 
 {% block title %}Flasky{% endblock %}
 
-{% block page_content %}
-  <div class="page-header">
-    {%if prediction_text%}
-      <h1>{{prediction_text}}</h1>
-    {%endif%}
-  </div>
-  <div class="row">
-      <div class='col-sm-6'>
-        {{ wtf.quick_form(form) }}
-      </div>
+
+{% block navbar %}
+  <div id="mySidenav" class="sidenav">
+      {{ wtf.quick_form(form) }}
   </div>
 {% endblock %}
 
-</div>
+{% block page_content %}
+
+  <div class="main" id="main">
+
+    <div id="predict_txt">
+    {%if prediction_text%}
+      <h2>{{prediction_text}}</h2>
+      {%endif%}
+    </div>
+
+    <div style="height:90%; width:100%">
+      {{"decoupled-map"|googlemap_js(37.4419, -122.1419, markers=[(37.4419,-122.1419)])}} {{bike_map.js}}
+      {{bike_map.html}}
+    </div>
+
+  </div>
+{% endblock %}
