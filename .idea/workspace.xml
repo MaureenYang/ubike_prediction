@@ -4,11 +4,8 @@
     <list default="true" id="ef3bc300-3c95-4299-85af-ce5ecc62f492" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/ModelComparison.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModelComparison.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/ada_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ada_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/gb_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/gb_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/rf_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/rf_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_compare.png" beforeDir="false" afterPath="$PROJECT_DIR$/model_compare.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rf_compare_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/rf_compare_error.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rf_feature_importance.png" beforeDir="false" afterPath="$PROJECT_DIR$/rf_feature_importance.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rf_prediction.png" beforeDir="false" afterPath="$PROJECT_DIR$/rf_prediction.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/gb_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1092">
-              <caret line="116" column="32" selection-start-line="114" selection-end-line="124" selection-end-column="64" />
+            <state relative-caret-position="428">
+              <caret line="200" column="50" selection-start-line="200" selection-start-column="50" selection-end-line="200" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -30,25 +27,58 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/rf_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-192">
-              <caret line="54" column="82" selection-start-line="54" selection-start-column="82" selection-end-line="54" selection-end-column="82" />
+            <state relative-caret-position="428">
+              <caret line="198" column="51" lean-forward="true" selection-start-line="198" selection-start-column="35" selection-end-line="198" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/Lib/pickle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="523" selection-start-line="523" selection-end-line="523" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ModelComparison.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="249">
+              <caret line="100" column="21" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="21" />
+              <folding>
+                <element signature="e#114#148#0" expanded="true" />
+              </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/lasso_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2312" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/lr_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1352" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Models/ridge_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2492" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Anaconda3/Lib/codecs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
+            <state relative-caret-position="6400">
               <caret line="321" selection-start-line="321" selection-end-line="321" />
             </state>
           </provider>
@@ -57,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow_gpuenv/Lib/site-packages/sklearn/model_selection/_search.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7360">
+            <state relative-caret-position="832">
               <caret line="396" selection-start-line="396" selection-end-line="396" />
             </state>
           </provider>
@@ -66,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/ada_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="71" column="59" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
+            <state>
+              <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -79,6 +109,7 @@
       <find>model.p</find>
       <find>ada</find>
       <find>estimator_name_list</find>
+      <find>Current Model</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -87,10 +118,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Models/gb_model.py" />
-        <option value="$PROJECT_DIR$/Models/rf_model.py" />
-        <option value="$PROJECT_DIR$/Models/ada_model.py" />
         <option value="$PROJECT_DIR$/ModelComparison.py" />
+        <option value="$PROJECT_DIR$/Models/ada_model.py" />
+        <option value="$PROJECT_DIR$/Models/rf_model.py" />
+        <option value="$PROJECT_DIR$/Models/gb_model.py" />
       </list>
     </option>
   </component>
@@ -223,46 +254,71 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow_gpuenv/Lib/site-packages/sklearn/model_selection/_search.py">
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7360">
-          <caret line="396" selection-start-line="396" selection-end-line="396" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/gb_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="116" column="32" selection-start-line="114" selection-end-line="124" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/rf_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-192">
-          <caret line="54" column="82" selection-start-line="54" selection-start-column="82" selection-end-line="54" selection-end-column="82" />
+        <state relative-caret-position="6400">
+          <caret line="321" selection-start-line="321" selection-end-line="321" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Models/ada_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="71" column="59" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
+        <state>
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/codecs.py">
+    <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow_gpuenv/Lib/site-packages/sklearn/model_selection/_search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="396" selection-start-line="396" selection-end-line="396" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/pickle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
-          <caret line="321" selection-start-line="321" selection-end-line="321" />
+          <caret line="523" selection-start-line="523" selection-end-line="523" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ModelComparison.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="249">
+          <caret line="100" column="21" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="21" />
+          <folding>
+            <element signature="e#114#148#0" expanded="true" />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/rf_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="198" column="51" lean-forward="true" selection-start-line="198" selection-start-column="35" selection-end-line="198" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/gb_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="200" column="50" selection-start-line="200" selection-start-column="50" selection-end-line="200" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/lasso_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2312" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/lr_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1352" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/ridge_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2492" />
       </provider>
     </entry>
   </component>

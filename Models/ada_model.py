@@ -46,13 +46,13 @@ def ada(X, Y, kfold=3, feature_set=None):
         train_index = train
         test_index = test
 
-    train_X, train_y = X.values[train_index,:], Y.values[train_index]
-    test_X, test_y = X.values[test_index,:], Y.values[test_index]
-    arr = index_splitter(N = len(train_X), fold = kfold)
+    train_X, train_y = X.values[train_index, :], Y.values[train_index]
+    test_X, test_y = X.values[test_index, :], Y.values[test_index]
+    arr = index_splitter(N=len(train_X), fold=kfold)
     ps2 = PredefinedSplit(arr)
 
-    learning_rate = [x for x in np.linspace(0.1, 1, num = 3)]
-    n_estimators = [int(x) for x in np.linspace(start=20, stop=1000, num = 20)]
+    learning_rate = [x for x in np.linspace(0.1, 1, num=3)]
+    n_estimators = [int(x) for x in np.linspace(start=20, stop=500, num=20)]
     loss = ['square']
 
     random_grid = { 'n_estimators': n_estimators,

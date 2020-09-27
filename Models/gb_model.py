@@ -198,4 +198,4 @@ def gb(X, Y, kfold=3, feature_set=None):
         #plt.show()
         plt.savefig('gb_prediction.png')
 
-    return gb_grid.predict,gb_grid
+    return gb_grid.predict,gb_grid.best_estimator_

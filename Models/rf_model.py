@@ -52,14 +52,14 @@ def rf(X, Y, kfold=3, feature_set=None):
     arr = index_splitter(N = len(train_X), fold = kfold)
     ps2 = PredefinedSplit(arr)
 
-    n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+    n_estimators = [int(x) for x in np.linspace(start=500, stop=1000, num = 10)]
     # Number of features to consider at every split
     max_features = ['auto', 'sqrt']
     # Maximum number of levels in tree
     max_depth = [int(x) for x in np.linspace(5,15,num = 2)]
-   # max_depth.append(None)
+    max_depth.append(None)
     # Minimum number of samples required to split a node
-    min_samples_split = [5, 10]
+    min_samples_split = [2, 5]
     # Minimum number of samples required at each leaf node
     min_samples_leaf = [2, 4]
     # Method of selecting samples for training each tree

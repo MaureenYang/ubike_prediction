@@ -12,17 +12,6 @@ import Models.gb_model as gb
 import Models.ada_model as ada
 import pickle
 from sklearn.utils import _joblib as joblib
-
-
-
-
-
-
-
-
-
-
-
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import PredefinedSplit
 
@@ -109,7 +98,7 @@ for i, estimator in enumerate(estimator_list):
     print("Current Model:",estimator_name_list[i])
     model_predict, model = estimator(train_X, train_y)
     model_name = estimator_name_list[i]+".joblib"
-    joblib.dump(estimator, model_name)
+    joblib.dump(model, model_name)
     # 在windows下使用pickle解析该文件
     # with open(model_name, 'r',encoding="utf-8") as f:
     #     string = f.read()
@@ -142,7 +131,7 @@ for i, estimator in enumerate(estimator_list):
 
     model_score_matrix.append(model_score_list)
 
-fig=plt.figure(figsize=(100,8))
+fig=plt.figure(figsize=(40,8))
 x_axis = [i for i in range(len(file_name_list))]
 
 for i, y in enumerate(model_score_matrix):
