@@ -1,0 +1,116 @@
+body {
+    font-family: sans-serif;
+    background-color: black;
+}
+h1 {
+    color: white;
+    text-align: center;
+    display:inline;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+h2, h3, h4, h5, h6 {
+    color: white;
+    text-align: left;
+    display: inline;
+}
+
+.main-div{
+  display: flex;
+  flex-direction: column;
+  max-height: 800px;
+  align-items: stretch;
+  margin:auto;
+  overflow: scroll;
+}
+
+.header-div{
+  display: flex;
+  margin:auto;
+}
+
+.body-div{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin:auto;
+}
+
+.info-div {
+  flex: 1;
+  background-color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.info-down-div, .info-up-div{
+  flex: 1;
+  flex-shrink: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+
+.graph-div {
+  flex: 1;
+  flex-shrink: 1;
+  background-color: green;
+  padding: 10px;
+}
+
+.div-value-block{
+  padding:5px;
+}
+
+.div-user-control {
+   min-width: 300px;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   color: white;
+   margin-left:5%;
+ }
+
+.current-station-div {
+   min-width: 300px;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   color: grey;
+   margin-left:5%;
+ }
+
+.search-result-div {
+    min-width: 300px;
+    display: flex
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 5%;
+}
+
+#location-dropdown
+{
+  height: 30px;
+  color:black;
+  margin:5%;
+  padding-left: 0px;
+}
+
+#date-picker
+{
+  height: 30px;
+  color: grey;
+  margin:5%;
+}
+
+#bar-selector{
+
+  height: 30px;
+  color:black;
+  margin:5%;
+}
